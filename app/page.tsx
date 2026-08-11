@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import logoImg from "../public/lh-img-0.png"
+import heroImg from "../public/hero-image.png"
 import { motion } from "framer-motion"
 import {
   Check,
@@ -67,9 +69,7 @@ export default function Home() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <Layers className="h-5 w-5 text-primary-foreground" />
-              </div>
+              <Image src={logoImg} alt="Liên Hoa Group Logo" className="h-8 w-auto object-contain" priority />
               <span className="font-bold text-xl tracking-tight">Liên Hoa Group</span>
             </div>
 
@@ -235,10 +235,8 @@ export default function Home() {
               <div className="mt-16 mx-auto max-w-5xl relative">
                 <div className="relative rounded-2xl border bg-card shadow-2xl overflow-hidden">
                   <Image 
-                    src="/hero-image.png" 
+                    src={heroImg} 
                     alt="LiOne Dashboard Interface" 
-                    width={1200}
-                    height={750}
                     className="w-full h-auto"
                     priority
                   />
