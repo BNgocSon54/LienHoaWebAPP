@@ -390,11 +390,6 @@ export default function LandingPage() {
 
           <div className="container px-4 md:px-6 relative">
             <div className="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10 mx-auto text-center max-w-5xl">
-              {/* Badge */}
-              <SlideEffect>
-                <FeatureBadge number={setupSettings.badge.number} text={setupSettings.badge.text} />
-              </SlideEffect>
-
               {/* Title */}
               <SlideEffect>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl capitalize font-bold leading-none tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
