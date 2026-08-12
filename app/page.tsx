@@ -20,8 +20,8 @@ import {
   Moon,
   Sun,
   ArrowRight,
+  ArrowUpRight,
   Star,
-  MessageCircle,
   Bird,
   ShieldCheck,
   Activity,
@@ -262,71 +262,72 @@ export default function Home() {
           </div>
 
           <div className="overflow-hidden w-full">
-            <div
-              className="flex items-center w-max"
-              style={{ animation: 'marquee-track 18s linear infinite' }}
-            >
-              {/* Original set */}
+            <div className="marquee-track">
+              <div className="marquee-group" aria-label="Các công cụ được thay thế">
               {/* Word */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={wordIcon} alt="Word" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Word</span>
               </div>
               {/* Excel */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={excelIcon} alt="Excel" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Excel</span>
               </div>
               {/* Gmail */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={gmailIcon} alt="Gmail" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Gmail</span>
               </div>
               {/* Outlook */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={outlookIcon} alt="Outlook" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Outlook</span>
               </div>
               {/* Zalo */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={zaloIcon} alt="Zalo" className="h-8 w-8 object-contain rounded-full" />
                 <span className="text-2xl font-bold tracking-tight">Zalo</span>
               </div>
               {/* Lark */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={larkIcon} alt="Lark" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Lark</span>
               </div>
-              {/* Exact duplicate for seamless loop */}
+              </div>
+
+              {/* Exact duplicate for a seamless loop */}
+              <div className="marquee-group" aria-hidden="true">
               {/* Word */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={wordIcon} alt="Word" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Word</span>
               </div>
               {/* Excel */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={excelIcon} alt="Excel" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Excel</span>
               </div>
               {/* Gmail */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={gmailIcon} alt="Gmail" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Gmail</span>
               </div>
               {/* Outlook */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={outlookIcon} alt="Outlook" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Outlook</span>
               </div>
               {/* Zalo */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={zaloIcon} alt="Zalo" className="h-8 w-8 object-contain rounded-full" />
                 <span className="text-2xl font-bold tracking-tight">Zalo</span>
               </div>
               {/* Lark */}
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+              <div className="flex items-center gap-3 shrink-0 opacity-70">
                 <Image src={larkIcon} alt="Lark" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Lark</span>
+              </div>
               </div>
             </div>
           </div>
@@ -834,7 +835,18 @@ export default function Home() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-lg mb-1">Văn phòng</h4>
-                        <p className="mt-2 text-sm text-muted-foreground">34s2 An Bình, Trấn Biên, Thành Phố Đồng Nai</p>
+                        <div className="mt-2 space-y-3 text-sm text-muted-foreground">
+                          <p>
+                            <span className="font-semibold text-foreground/90">CTY CP TMDV Liên Hoa</span>
+                            <br />
+                            34s2 An Bình, Trấn Biên, Thành Phố Đồng Nai
+                          </p>
+                          <p>
+                            <span className="font-semibold text-foreground/90">CTY TNHH MAY Liên Hoa</span>
+                            <br />
+                            754 Thọ Hòa, Xuân Lộc, Thành Phố Đồng Nai
+                          </p>
+                        </div>
                       </div>
                     </div>
 
@@ -844,7 +856,16 @@ export default function Home() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-lg mb-1">Hotline / Zalo</h4>
-                        <p className="mt-2 text-sm text-muted-foreground">0376 566 517</p>
+                        <a
+                          href="https://zalo.me/0376566517"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                          aria-label="Mở Zalo qua số 0376 566 517"
+                        >
+                          0376 566 517
+                          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                        </a>
                       </div>
                     </div>
 
@@ -918,9 +939,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                  <Layers className="h-5 w-5 text-primary-foreground" />
-                </div>
+                <Image src={logoImg} alt="Liên Hoa Group Logo" className="h-8 w-auto object-contain" />
                 <span className="font-bold text-xl">Liên Hoa Group</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">

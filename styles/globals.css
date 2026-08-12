@@ -78,3 +78,26 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: marquee-track 18s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  min-width: max(100vw, 72rem);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  padding-inline: 2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
+}
