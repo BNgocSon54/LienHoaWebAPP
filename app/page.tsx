@@ -957,7 +957,7 @@ export default function Home() {
           
           <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © 2026 Liên Hoa Group. Bản quyền thuộc về Công ty Cổ Phần Công Nghệ ByteOne.
+              © 2026 Liên Hoa Group. Bản quyền thuộc về Công ty Cổ Phần Thương Mại Dịch Vụ Liên Hoa.
             </p>
             <div className="flex gap-4">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Facebook</Link>
