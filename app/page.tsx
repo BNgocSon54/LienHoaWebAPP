@@ -5,6 +5,12 @@ import Link from "next/link"
 import Image from "next/image"
 import logoImg from "../public/lh-img-0.png"
 import heroImg from "../public/hero-image.png"
+import wordIcon from "../public/Microsoft_Office_Word_(2025–present).svg.webp"
+import excelIcon from "../public/Microsoft_Office_Excel_(2025–present).svg"
+import gmailIcon from "../public/Gmail_icon_(2020).svg.webp"
+import outlookIcon from "../public/Microsoft_Office_Outlook_(2018–2024).svg.webp"
+import zaloIcon from "../public/zalo.png"
+import larkIcon from "../public/Lark_Suite_logo_2022.png"
 import { motion } from "framer-motion"
 import {
   Check,
@@ -261,53 +267,65 @@ export default function Home() {
               style={{ animation: 'marquee-track 18s linear infinite' }}
             >
               {/* Original set */}
+              {/* Word */}
               <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
-                <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-extrabold text-sm">W</div>
+                <Image src={wordIcon} alt="Word" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Word</span>
               </div>
+              {/* Excel */}
               <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
-                <div className="h-8 w-8 rounded-lg bg-green-600 flex items-center justify-center text-white font-extrabold text-sm">X</div>
+                <Image src={excelIcon} alt="Excel" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Excel</span>
               </div>
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70 text-red-500">
-                <Mail className="h-7 w-7" />
+              {/* Gmail */}
+              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+                <Image src={gmailIcon} alt="Gmail" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Gmail</span>
               </div>
+              {/* Outlook */}
               <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
-                <div className="h-8 w-8 rounded-lg bg-blue-500 flex items-center justify-center text-white font-extrabold text-sm">O</div>
+                <Image src={outlookIcon} alt="Outlook" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Outlook</span>
               </div>
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70 text-blue-500">
-                <MessageCircle className="h-7 w-7" />
+              {/* Zalo */}
+              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+                <Image src={zaloIcon} alt="Zalo" className="h-8 w-8 object-contain rounded-full" />
                 <span className="text-2xl font-bold tracking-tight">Zalo</span>
               </div>
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70 text-cyan-600">
-                <Bird className="h-7 w-7" />
+              {/* Lark */}
+              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70">
+                <Image src={larkIcon} alt="Lark" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Lark</span>
               </div>
               {/* Exact duplicate for seamless loop */}
+              {/* Word */}
               <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
-                <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-extrabold text-sm">W</div>
+                <Image src={wordIcon} alt="Word" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Word</span>
               </div>
+              {/* Excel */}
               <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
-                <div className="h-8 w-8 rounded-lg bg-green-600 flex items-center justify-center text-white font-extrabold text-sm">X</div>
+                <Image src={excelIcon} alt="Excel" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Excel</span>
               </div>
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70 text-red-500" aria-hidden="true">
-                <Mail className="h-7 w-7" />
+              {/* Gmail */}
+              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+                <Image src={gmailIcon} alt="Gmail" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Gmail</span>
               </div>
+              {/* Outlook */}
               <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
-                <div className="h-8 w-8 rounded-lg bg-blue-500 flex items-center justify-center text-white font-extrabold text-sm">O</div>
+                <Image src={outlookIcon} alt="Outlook" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Outlook</span>
               </div>
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70 text-blue-500" aria-hidden="true">
-                <MessageCircle className="h-7 w-7" />
+              {/* Zalo */}
+              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+                <Image src={zaloIcon} alt="Zalo" className="h-8 w-8 object-contain rounded-full" />
                 <span className="text-2xl font-bold tracking-tight">Zalo</span>
               </div>
-              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70 text-cyan-600" aria-hidden="true">
-                <Bird className="h-7 w-7" />
+              {/* Lark */}
+              <div className="flex items-center gap-3 shrink-0 mx-16 opacity-70" aria-hidden="true">
+                <Image src={larkIcon} alt="Lark" className="h-8 w-8 object-contain" />
                 <span className="text-2xl font-bold tracking-tight">Lark</span>
               </div>
             </div>
