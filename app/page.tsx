@@ -53,6 +53,8 @@ import FeatureCard from "@/components/feature-card"
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly")
+  const [activeApp, setActiveApp] = useState("booking-kol")
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
@@ -693,121 +695,463 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Section (Liên Hoa Group) */}
-        <section id="pricing" className="py-20 md:py-28 bg-muted/30">
+        {/* ========== PRICING SECTION ========== */}
+        <section id="pricing" className="py-24 sm:py-32 bg-muted/40">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+
+            {/* ── Section Header ── */}
+            <div className="mx-auto max-w-2xl text-center mb-12">
               <SlideEffect>
-                <Badge variant="secondary" className="px-3 py-1 text-sm font-medium mb-4">Bảng giá</Badge>
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+                <Badge variant="outline" className="mb-4">Bảng giá</Badge>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
                   Chọn gói phù hợp với doanh nghiệp bạn
                 </h2>
-                <p className="text-lg text-muted-foreground">
-                  Bắt đầu với gói Cơ bản hoặc nâng lên Doanh nghiệp để dùng trọn bộ giải pháp. Thanh toán năm tiết kiệm hơn (~20%).
+                <p className="text-lg text-muted-foreground mb-8">
+                  Bắt đầu với gói Cơ bản hoặc nâng lên Doanh nghiệp để dùng trọn bộ giải pháp. Thanh toán năm tiết kiệm hơn.
+                </p>
+              </SlideEffect>
+
+              {/* Billing Toggle */}
+              <SlideEffect>
+                <div className="flex items-center justify-center mb-2">
+                  <div className="inline-flex items-center bg-secondary text-secondary-foreground rounded-full p-1 cursor-pointer">
+                    <button
+                      onClick={() => setBillingCycle("monthly")}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                        billingCycle === "monthly"
+                          ? "bg-background border border-border text-foreground shadow-sm"
+                          : "border border-transparent text-secondary-foreground hover:text-foreground"
+                      }`}
+                    >
+                      Theo tháng
+                    </button>
+                    <button
+                      onClick={() => setBillingCycle("yearly")}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                        billingCycle === "yearly"
+                          ? "bg-background border border-border text-foreground shadow-sm"
+                          : "border border-transparent text-secondary-foreground hover:text-foreground"
+                      }`}
+                    >
+                      Theo năm
+                    </button>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  <span className="text-primary font-semibold">Tiết kiệm ~20%</span> khi thanh toán theo năm
                 </p>
               </SlideEffect>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {/* Basic Plan */}
-              <SlideEffect delay={0.1}>
-                <Card className="h-full flex flex-col border-border/50 shadow-md">
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold mb-2">Cơ bản</CardTitle>
-                    <p className="text-sm text-muted-foreground min-h-[40px]">Phù hợp cho cửa hàng và đội nhóm nhỏ mới bắt đầu</p>
-                    <div className="mt-4">
-                      <span className="text-4xl font-extrabold">990.000₫</span>
-                      <span className="text-muted-foreground">/tháng</span>
-                    </div>
-                    <Button className="w-full mt-6" variant="outline">Đăng ký tư vấn</Button>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <ul className="space-y-3 mt-4">
-                      {[
-                        "1 ứng dụng tuỳ chọn",
-                        "Tối đa 5 người dùng",
-                        "Báo cáo cơ bản",
-                        "Sao lưu định kỳ",
-                        "Hỗ trợ trong giờ hành chính"
-                      ].map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </SlideEffect>
+            {/* ── Pricing Cards ── */}
+            <div className="mx-auto max-w-6xl">
+              <SlideEffect>
+                <div className="rounded-xl border">
+                  <div className="grid lg:grid-cols-3">
+                    {/* ── Cơ bản ── */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      className="p-8 flex flex-col gap-6"
+                    >
+                      {/* Plan Header */}
+                      <div>
+                        <div className="text-lg font-medium tracking-tight mb-2">Cơ bản</div>
+                        <div className="text-muted-foreground text-balance text-sm">
+                          Phù hợp cho cửa hàng và đội nhóm nhỏ mới bắt đầu
+                        </div>
+                      </div>
 
-              {/* Enterprise Plan */}
-              <SlideEffect delay={0.2}>
-                <Card className="h-full flex flex-col border-primary shadow-xl relative scale-100 md:scale-105 z-10">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    Phổ biến nhất
+                      {/* Pricing */}
+                      <div>
+                        <div className="text-4xl font-bold mb-1">
+                          {billingCycle === "yearly" ? "790.000₫" : "990.000₫"}
+                        </div>
+                        <div className="text-muted-foreground text-sm">mỗi tháng</div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <div>
+                        <Button
+                          asChild
+                          className="w-full cursor-pointer my-2 shadow-sm shadow-black/15 border border-transparent bg-background ring-1 ring-foreground/10 hover:bg-muted/50"
+                          variant="secondary"
+                        >
+                          <a href="#contact">Đăng ký tư vấn</a>
+                        </Button>
+                      </div>
+
+                      {/* Features */}
+                      <div>
+                        <ul role="list" className="space-y-3 text-sm">
+                          {[
+                            "1 ứng dụng tuỳ chọn",
+                            "Tối đa 5 người dùng",
+                            "Báo cáo cơ bản",
+                            "Sao lưu định kỳ",
+                            "Hỗ trợ trong giờ hành chính"
+                          ].map((feature, i) => (
+                            <li key={i} className="flex items-center gap-3">
+                              <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+
+                    {/* ── Doanh nghiệp (Popular) ── */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="p-8 flex flex-col gap-6 my-2 mx-4 rounded-xl bg-card border-transparent shadow-xl ring-1 ring-foreground/10 backdrop-blur"
+                    >
+                      {/* Plan Header */}
+                      <div>
+                        <div className="text-lg font-medium tracking-tight mb-2">Doanh nghiệp</div>
+                        <div className="text-muted-foreground text-balance text-sm">
+                          Cho doanh nghiệp cần trọn bộ giải pháp vận hành
+                        </div>
+                      </div>
+
+                      {/* Pricing */}
+                      <div>
+                        <div className="text-4xl font-bold mb-1">
+                          {billingCycle === "yearly" ? "2.490.000₫" : "2.990.000₫"}
+                        </div>
+                        <div className="text-muted-foreground text-sm">mỗi tháng</div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <div>
+                        <Button
+                          asChild
+                          className="w-full cursor-pointer my-2 shadow-md border-[0.5px] border-white/25 shadow-black/20 bg-primary ring-1 ring-primary/15 text-primary-foreground hover:bg-primary/90"
+                        >
+                          <a href="#contact">Đăng ký tư vấn</a>
+                        </Button>
+                      </div>
+
+                      {/* Features */}
+                      <div>
+                        <ul role="list" className="space-y-3 text-sm">
+                          <li className="flex items-center gap-3 font-medium">
+                            Toàn bộ gói Cơ bản, cộng thêm:
+                          </li>
+                          {[
+                            "Trọn bộ ứng dụng (Kho, KOL, Video, AI)",
+                            "Số người dùng linh hoạt",
+                            "Phân quyền theo vai trò",
+                            "Báo cáo & bảng điều khiển nâng cao",
+                            "Chữ ký số & duyệt chứng từ",
+                            "Hỗ trợ ưu tiên"
+                          ].map((feature, i) => (
+                            <li key={i} className="flex items-center gap-3">
+                              <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+
+                    {/* ── Tùy chỉnh ── */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="p-8 flex flex-col gap-6"
+                    >
+                      {/* Plan Header */}
+                      <div>
+                        <div className="text-lg font-medium tracking-tight mb-2">Tùy chỉnh</div>
+                        <div className="text-muted-foreground text-balance text-sm">
+                          Giải pháp riêng theo quy mô và quy trình đặc thù
+                        </div>
+                      </div>
+
+                      {/* Pricing */}
+                      <div>
+                        <div className="text-4xl font-bold mb-1">Liên hệ</div>
+                        <div className="text-muted-foreground text-sm">Báo giá theo yêu cầu</div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <div>
+                        <Button
+                          asChild
+                          className="w-full cursor-pointer my-2 shadow-sm shadow-black/15 border border-transparent bg-background ring-1 ring-foreground/10 hover:bg-muted/50"
+                          variant="secondary"
+                        >
+                          <a href="#contact">Liên hệ</a>
+                        </Button>
+                      </div>
+
+                      {/* Features */}
+                      <div>
+                        <ul role="list" className="space-y-3 text-sm">
+                          <li className="flex items-center gap-3 font-medium">
+                            Toàn bộ gói Doanh nghiệp, cộng thêm:
+                          </li>
+                          {[
+                            "Tuỳ biến tính năng theo yêu cầu",
+                            "Triển khai & đào tạo tận nơi",
+                            "Tích hợp hệ thống sẵn có",
+                            "Quản lý tài khoản riêng",
+                            "Cam kết SLA"
+                          ].map((feature, i) => (
+                            <li key={i} className="flex items-center gap-3">
+                              <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
                   </div>
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold mb-2">Doanh nghiệp</CardTitle>
-                    <p className="text-sm text-muted-foreground min-h-[40px]">Cho doanh nghiệp cần trọn bộ giải pháp vận hành</p>
-                    <div className="mt-4">
-                      <span className="text-4xl font-extrabold">2.990.000₫</span>
-                      <span className="text-muted-foreground">/tháng</span>
-                    </div>
-                    <Button className="w-full mt-6">Đăng ký tư vấn</Button>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <div className="text-sm font-semibold mb-4 text-foreground">Toàn bộ gói Cơ bản, cộng thêm:</div>
-                    <ul className="space-y-3">
-                      {[
-                        "Trọn bộ ứng dụng (Kho, KOL, Video, AI)",
-                        "Số người dùng linh hoạt",
-                        "Phân quyền theo vai trò",
-                        "Báo cáo & bảng điều khiển nâng cao",
-                        "Chữ ký số & duyệt chứng từ",
-                        "Hỗ trợ ưu tiên"
-                      ].map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </SlideEffect>
-
-              {/* Custom Plan */}
-              <SlideEffect delay={0.3}>
-                <Card className="h-full flex flex-col border-border/50 shadow-md">
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold mb-2">Tùy chỉnh</CardTitle>
-                    <p className="text-sm text-muted-foreground min-h-[40px]">Giải pháp riêng theo quy mô và quy trình đặc thù</p>
-                    <div className="mt-4">
-                      <span className="text-4xl font-extrabold">Liên hệ</span>
-                      <span className="text-muted-foreground block mt-1">Báo giá theo yêu cầu</span>
-                    </div>
-                    <Button className="w-full mt-6" variant="outline">Liên hệ tư vấn</Button>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <div className="text-sm font-semibold mb-4 text-foreground">Toàn bộ gói Doanh nghiệp, cộng thêm:</div>
-                    <ul className="space-y-3">
-                      {[
-                        "Tuỳ biến tính năng theo yêu cầu",
-                        "Triển khai & đào tạo tận nơi",
-                        "Tích hợp hệ thống sẵn có",
-                        "Quản lý tài khoản riêng",
-                        "Cam kết SLA"
-                      ].map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                </div>
               </SlideEffect>
             </div>
+
+            {/* ══════════════════════════════════════════
+                 DIVIDER – "Hoặc mua lẻ từng ứng dụng"
+               ══════════════════════════════════════════ */}
+            <div className="max-w-5xl mx-auto mt-28 mb-14">
+              <SlideEffect>
+                <div className="text-center mb-10">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+                    Hoặc mua lẻ từng ứng dụng
+                  </h3>
+                  <p className="text-sm text-muted-foreground max-w-lg mx-auto mt-3">
+                    Tối ưu chi phí cho các doanh nghiệp chỉ cần tính năng cụ thể
+                  </p>
+                </div>
+
+                {/* App tabs */}
+                <div className="flex items-center justify-center mb-10">
+                  <div className="inline-flex items-center bg-secondary text-secondary-foreground rounded-full p-1 cursor-pointer">
+                    {[
+                      { key: "booking-kol", label: "Booking KOL", icon: "📋" },
+                      { key: "ai-kiem-kho", label: "AI Kiểm Kho", icon: "🤖" },
+                      { key: "dhn-lien-hoa", label: "DHN Liên Hoa", icon: "🔗" }
+                    ].map((tab) => (
+                      <button
+                        key={tab.key}
+                        onClick={() => setActiveApp(tab.key)}
+                        className={`inline-flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                          activeApp === tab.key
+                            ? "bg-background border border-border text-foreground shadow-sm"
+                            : "border border-transparent text-secondary-foreground hover:text-foreground"
+                        }`}
+                      >
+                        <span className="text-base">{tab.icon}</span>
+                        {tab.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </SlideEffect>
+
+              {/* ── Billing toggle (per-app) ── */}
+              <SlideEffect>
+                <div className="flex flex-col items-center gap-2 mb-10">
+                  <div className="inline-flex items-center bg-secondary text-secondary-foreground rounded-full p-1 cursor-pointer">
+                    <button
+                      onClick={() => setBillingCycle("monthly")}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                        billingCycle === "monthly"
+                          ? "bg-background border border-border text-foreground shadow-sm"
+                          : "border border-transparent text-secondary-foreground hover:text-foreground"
+                      }`}
+                    >
+                      Theo tháng
+                    </button>
+                    <button
+                      onClick={() => setBillingCycle("yearly")}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                        billingCycle === "yearly"
+                          ? "bg-background border border-border text-foreground shadow-sm"
+                          : "border border-transparent text-secondary-foreground hover:text-foreground"
+                      }`}
+                    >
+                      Theo năm
+                    </button>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    <span className="text-primary font-semibold">Tiết kiệm ~20%</span> khi thanh toán theo năm
+                  </p>
+                </div>
+              </SlideEffect>
+
+              {/* ══════════════════════════════════════════
+                   TIER 2 – Per-app pricing
+                 ══════════════════════════════════════════ */}
+              <div className="rounded-xl border">
+                <div className="grid lg:grid-cols-3">
+
+                  {/* ── Khởi đầu ── */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="p-8 flex flex-col gap-6"
+                  >
+                    <div>
+                      <div className="text-lg font-medium tracking-tight mb-2">Khởi đầu</div>
+                      <div className="text-muted-foreground text-balance text-sm">
+                        Phù hợp cho shop nhỏ chạy chiến dịch cơ bản
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-4xl font-bold mb-1">
+                        {billingCycle === "yearly" ? "472.000₫" : "590.000₫"}
+                      </div>
+                      <div className="text-muted-foreground text-sm">mỗi tháng</div>
+                    </div>
+                    <div>
+                      <Button
+                        asChild
+                        className="w-full cursor-pointer my-2 shadow-sm shadow-black/15 border border-transparent bg-background ring-1 ring-foreground/10 hover:bg-muted/50"
+                        variant="secondary"
+                      >
+                        <a href="#contact">Đăng ký ngay</a>
+                      </Button>
+                    </div>
+                    <div>
+                      <ul role="list" className="space-y-3 text-sm">
+                        {[
+                          "Tối đa 5 chiến dịch",
+                          "Kho dữ liệu 100 KOL",
+                          "Theo dõi cơ bản",
+                          "Hỗ trợ giờ hành chính"
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3">
+                            <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  {/* ── Chuyên nghiệp ── */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="p-8 flex flex-col gap-6 my-2 mx-4 rounded-xl bg-card border-transparent shadow-xl ring-1 ring-foreground/10 backdrop-blur"
+                  >
+                    <div>
+                      <div className="text-lg font-medium tracking-tight mb-2">Chuyên nghiệp</div>
+                      <div className="text-muted-foreground text-balance text-sm">
+                        Quản lý KOL và Affiliate toàn diện
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-4xl font-bold mb-1">
+                        {billingCycle === "yearly" ? "960.000₫" : "1.200.000₫"}
+                      </div>
+                      <div className="text-muted-foreground text-sm">mỗi tháng</div>
+                    </div>
+                    <div>
+                      <Button
+                        asChild
+                        className="w-full cursor-pointer my-2 shadow-md border-[0.5px] border-white/25 shadow-black/20 bg-primary ring-1 ring-primary/15 text-primary-foreground hover:bg-primary/90"
+                      >
+                        <a href="#contact">Đăng ký ngay</a>
+                      </Button>
+                    </div>
+                    <div>
+                      <ul role="list" className="space-y-3 text-sm">
+                        <li className="flex items-center gap-3 font-medium">
+                          Tính năng Khởi đầu, cộng thêm:
+                        </li>
+                        {[
+                          "Chiến dịch không giới hạn",
+                          "Kho dữ liệu KOL không giới hạn",
+                          "Theo dõi video & livestream",
+                          "Báo cáo hiệu suất nâng cao",
+                          "Hỗ trợ ưu tiên"
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3">
+                            <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  {/* ── Tùy chỉnh (per-app) ── */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="p-8 flex flex-col gap-6"
+                  >
+                    <div>
+                      <div className="text-lg font-medium tracking-tight mb-2">Tùy chỉnh</div>
+                      <div className="text-muted-foreground text-balance text-sm">
+                        Dành cho Agency và Doanh nghiệp lớn
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-4xl font-bold mb-1">Liên hệ</div>
+                      <div className="text-muted-foreground text-sm">Báo giá theo yêu cầu</div>
+                    </div>
+                    <div>
+                      <Button
+                        asChild
+                        className="w-full cursor-pointer my-2 shadow-sm shadow-black/15 border border-transparent bg-background ring-1 ring-foreground/10 hover:bg-muted/50"
+                        variant="secondary"
+                      >
+                        <a href="#contact">Liên hệ</a>
+                      </Button>
+                    </div>
+                    <div>
+                      <ul role="list" className="space-y-3 text-sm">
+                        <li className="flex items-center gap-3 font-medium">
+                          Tính năng Chuyên nghiệp, cộng thêm:
+                        </li>
+                        {[
+                          "Tuỳ biến Luồng duyệt",
+                          "Đào tạo tận nơi",
+                          "API riêng",
+                          "Quản lý tài khoản riêng"
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3">
+                            <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                </div>
+              </div>
+            </div>
+
+            {/* ── Enterprise Note ── */}
+            <SlideEffect>
+              <div className="mt-16 text-center">
+                <p className="text-muted-foreground">
+                  Cần giải pháp riêng hoặc có câu hỏi?{" "}
+                  <Link href="#contact" className="text-primary font-semibold underline underline-offset-4 hover:text-primary/80 transition-colors">
+                    Liên hệ đội ngũ Liên Hoa
+                  </Link>
+                </p>
+              </div>
+            </SlideEffect>
+
           </div>
         </section>
 
