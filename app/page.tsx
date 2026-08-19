@@ -754,7 +754,7 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.1 }}
-                      className="p-8 flex flex-col gap-6"
+                      className="p-8 grid grid-rows-subgrid row-span-4 gap-6"
                     >
                       {/* Plan Header */}
                       <div>
@@ -808,7 +808,7 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="p-8 flex flex-col gap-6 my-2 mx-4 rounded-xl bg-card border-transparent shadow-xl ring-1 ring-foreground/10 backdrop-blur"
+                      className="p-8 grid grid-rows-subgrid row-span-4 gap-6 my-2 mx-4 rounded-xl bg-card border-transparent shadow-xl ring-1 ring-foreground/10 backdrop-blur"
                     >
                       {/* Plan Header */}
                       <div>
@@ -865,7 +865,7 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.3 }}
-                      className="p-8 flex flex-col gap-6"
+                      className="p-8 grid grid-rows-subgrid row-span-4 gap-6"
                     >
                       {/* Plan Header */}
                       <div>
@@ -921,7 +921,7 @@ export default function Home() {
             {/* ══════════════════════════════════════════
                  DIVIDER – "Hoặc mua lẻ từng ứng dụng"
                ══════════════════════════════════════════ */}
-            <div className="max-w-5xl mx-auto mt-28 mb-14">
+            <div className="max-w-[90rem] mx-auto mt-28 mb-14">
               <SlideEffect>
                 <div className="text-center mb-10">
                   <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
@@ -992,7 +992,7 @@ export default function Home() {
                    TIER 2 – Per-app pricing
                  ══════════════════════════════════════════ */}
               <div className="rounded-xl border">
-                <div className="grid lg:grid-cols-3">
+                <div className="grid lg:grid-cols-4">
 
                   {/* ── Khởi đầu ── */}
                   <motion.div
@@ -1000,7 +1000,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="p-8 flex flex-col gap-6"
+                    className="p-8 grid grid-rows-subgrid row-span-4 gap-6"
                   >
                     <div>
                       <div className="text-lg font-medium tracking-tight mb-2">Khởi đầu</div>
@@ -1040,13 +1040,62 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* ── Chuyên nghiệp ── */}
+                  {/* ── Tiêu chuẩn ── */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="p-8 flex flex-col gap-6 my-2 mx-4 rounded-xl bg-card border-transparent shadow-xl ring-1 ring-foreground/10 backdrop-blur"
+                    className="p-8 grid grid-rows-subgrid row-span-4 gap-6"
+                  >
+                    <div>
+                      <div className="text-lg font-medium tracking-tight mb-2">Tiêu chuẩn</div>
+                      <div className="text-muted-foreground text-balance text-sm">
+                        Dành cho shop vừa cần mở rộng quy mô
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-4xl font-bold mb-1">
+                        {billingCycle === "yearly" ? "712.000₫" : "890.000₫"}
+                      </div>
+                      <div className="text-muted-foreground text-sm">mỗi tháng</div>
+                    </div>
+                    <div>
+                      <Button
+                        asChild
+                        className="w-full cursor-pointer my-2 shadow-sm shadow-black/15 border border-transparent bg-background ring-1 ring-foreground/10 hover:bg-muted/50"
+                        variant="secondary"
+                      >
+                        <a href="#contact">Đăng ký ngay</a>
+                      </Button>
+                    </div>
+                    <div>
+                      <ul role="list" className="space-y-3 text-sm">
+                        <li className="flex items-center gap-3 font-medium">
+                          Tính năng Khởi đầu, cộng thêm:
+                        </li>
+                        {[
+                          "Tối đa 15 chiến dịch",
+                          "Kho dữ liệu 500 KOL",
+                          "Báo cáo chi tiết",
+                          "Hỗ trợ qua chat/email"
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3">
+                            <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  {/* ── Chuyên nghiệp ── */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="p-8 grid grid-rows-subgrid row-span-4 gap-6"
                   >
                     <div>
                       <div className="text-lg font-medium tracking-tight mb-2">Chuyên nghiệp</div>
@@ -1063,7 +1112,8 @@ export default function Home() {
                     <div>
                       <Button
                         asChild
-                        className="w-full cursor-pointer my-2 shadow-md border-[0.5px] border-white/25 shadow-black/20 bg-primary ring-1 ring-primary/15 text-primary-foreground hover:bg-primary/90"
+                        className="w-full cursor-pointer my-2 shadow-sm shadow-black/15 border border-transparent bg-background ring-1 ring-foreground/10 hover:bg-muted/50"
+                        variant="secondary"
                       >
                         <a href="#contact">Đăng ký ngay</a>
                       </Button>
@@ -1071,14 +1121,13 @@ export default function Home() {
                     <div>
                       <ul role="list" className="space-y-3 text-sm">
                         <li className="flex items-center gap-3 font-medium">
-                          Tính năng Khởi đầu, cộng thêm:
+                          Tính năng Tiêu chuẩn, cộng thêm:
                         </li>
                         {[
                           "Chiến dịch không giới hạn",
                           "Kho dữ liệu KOL không giới hạn",
                           "Theo dõi video & livestream",
-                          "Báo cáo hiệu suất nâng cao",
-                          "Hỗ trợ ưu tiên"
+                          "Báo cáo hiệu suất nâng cao"
                         ].map((feature, i) => (
                           <li key={i} className="flex items-center gap-3">
                             <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
@@ -1089,31 +1138,32 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* ── Tùy chỉnh (per-app) ── */}
+                  {/* ── Cao cấp (Highlighted) ── */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="p-8 flex flex-col gap-6"
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="p-8 grid grid-rows-subgrid row-span-4 gap-6 my-2 mx-4 rounded-xl bg-card border-transparent shadow-xl ring-1 ring-foreground/10 backdrop-blur"
                   >
                     <div>
-                      <div className="text-lg font-medium tracking-tight mb-2">Tùy chỉnh</div>
+                      <div className="text-lg font-medium tracking-tight mb-2">Cao cấp</div>
                       <div className="text-muted-foreground text-balance text-sm">
-                        Dành cho Agency và Doanh nghiệp lớn
+                        Giải pháp tối ưu cho doanh nghiệp và Agency
                       </div>
                     </div>
                     <div>
-                      <div className="text-4xl font-bold mb-1">Liên hệ</div>
-                      <div className="text-muted-foreground text-sm">Báo giá theo yêu cầu</div>
+                      <div className="text-4xl font-bold mb-1">
+                        {billingCycle === "yearly" ? "1.592.000₫" : "1.990.000₫"}
+                      </div>
+                      <div className="text-muted-foreground text-sm">mỗi tháng</div>
                     </div>
                     <div>
                       <Button
                         asChild
-                        className="w-full cursor-pointer my-2 shadow-sm shadow-black/15 border border-transparent bg-background ring-1 ring-foreground/10 hover:bg-muted/50"
-                        variant="secondary"
+                        className="w-full cursor-pointer my-2 shadow-md border-[0.5px] border-white/25 shadow-black/20 bg-primary ring-1 ring-primary/15 text-primary-foreground hover:bg-primary/90"
                       >
-                        <a href="#contact">Liên hệ</a>
+                        <a href="#contact">Đăng ký ngay</a>
                       </Button>
                     </div>
                     <div>
@@ -1125,7 +1175,8 @@ export default function Home() {
                           "Tuỳ biến Luồng duyệt",
                           "Đào tạo tận nơi",
                           "API riêng",
-                          "Quản lý tài khoản riêng"
+                          "Quản lý tài khoản riêng",
+                          "Hỗ trợ ưu tiên 24/7"
                         ].map((feature, i) => (
                           <li key={i} className="flex items-center gap-3">
                             <Check className="text-muted-foreground size-4 flex-shrink-0" strokeWidth={2.5} />
