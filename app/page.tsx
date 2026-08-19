@@ -1270,7 +1270,7 @@ export default function Home() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-lg mb-1">Email</h4>
-                        <p className="mt-2 text-sm text-muted-foreground">contact@lienhoagroup.com</p>
+                        <p className="mt-2 text-sm text-muted-foreground">lienhoatechnology@gmail.com</p>
                       </div>
                     </div>
 
