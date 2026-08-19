@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import logoImg from "../public/lh-img-0.png"
+import logoImg from "../public/logo_withBackground.png"
 import heroImg from "../public/hero-image.png"
 import wordIcon from "../public/Microsoft_Office_Word_(2025–present).svg.webp"
 import excelIcon from "../public/Microsoft_Office_Excel_(2025–present).svg"
@@ -77,8 +77,8 @@ export default function Home() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center gap-2">
-              <Image src={logoImg} alt="Liên Hoa Group Logo" className="h-8 w-auto object-contain" priority />
-              <span className="font-bold text-xl tracking-tight">Liên Hoa Group</span>
+              <Image src={logoImg} alt="LiOne Logo" className="h-8 w-auto object-contain" priority />
+              <span className="font-bold text-xl tracking-tight">LiOne</span>
             </div>
 
             {/* Desktop Nav */}
@@ -1334,8 +1334,8 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <Image src={logoImg} alt="Liên Hoa Group Logo" className="h-8 w-auto object-contain" />
-                <span className="font-bold text-xl">Liên Hoa Group</span>
+                <Image src={logoImg} alt="LiOne Logo" className="h-8 w-auto object-contain" />
+                <span className="font-bold text-xl">LiOne</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 Nền tảng phần mềm vận hành cho doanh nghiệp Việt.
@@ -1371,7 +1371,7 @@ export default function Home() {
           
           <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © 2026 Liên Hoa Group. Bản quyền thuộc về Công ty Cổ Phần Thương Mại Dịch Vụ Liên Hoa.
+              © 2026 LiOne. Bản quyền thuộc về Công ty Cổ Phần Thương Mại Dịch Vụ Liên Hoa.
             </p>
             <div className="flex gap-4">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Facebook</Link>
