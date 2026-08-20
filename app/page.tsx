@@ -695,6 +695,49 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ========== DEV TEAM SECTION ========== */}
+        <section className="py-20 md:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <SlideEffect>
+                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+                  Our Team
+                </h2>
+                <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+                  A diverse group of experts dedicated to simplifying complex e-commerce operations.
+                </p>
+              </SlideEffect>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              {[
+                { name: "Team Member", role: "CEO & Founder" },
+                { name: "Team Member", role: "CTO" },
+                { name: "Team Member", role: "Head of Product" },
+                { name: "Team Member", role: "CMO" }
+              ].map((dev, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.12 }}
+                  className="flex flex-col items-center text-center group"
+                >
+                  {/* Circular Avatar */}
+                  <div className="w-36 h-36 md:w-44 md:h-44 rounded-full bg-muted flex items-center justify-center mb-5 group-hover:shadow-lg transition-shadow duration-300">
+                    <User className="w-16 h-16 md:w-20 md:h-20 text-muted-foreground/40" />
+                  </div>
+
+                  {/* Name & Role */}
+                  <h3 className="text-lg font-bold text-foreground mb-1">{dev.name}</h3>
+                  <p className="text-sm font-medium text-primary">{dev.role}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ========== PRICING SECTION ========== */}
         <section id="pricing" className="py-24 sm:py-32 bg-muted/40">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
