@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import logoImg from "../public/lh-img-0.png"
+import logoImg from "../public/logo_withBackground.png"
 import heroImg from "../public/hero-image.png"
 import wordIcon from "../public/Microsoft_Office_Word_(2025–present).svg.webp"
 import excelIcon from "../public/Microsoft_Office_Excel_(2025–present).svg"
@@ -77,8 +77,8 @@ export default function Home() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center gap-2">
-              <Image src={logoImg} alt="Liên Hoa Group Logo" className="h-8 w-auto object-contain" priority />
-              <span className="font-bold text-xl tracking-tight">Liên Hoa Group</span>
+              <Image src={logoImg} alt="LiOne Logo" className="h-8 w-auto object-contain" priority />
+              <span className="font-bold text-xl tracking-tight">LiOne</span>
             </div>
 
             {/* Desktop Nav */}
@@ -695,6 +695,49 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ========== DEV TEAM SECTION ========== */}
+        <section className="py-20 md:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <SlideEffect>
+                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+                  Our Team
+                </h2>
+                <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+                  A diverse group of experts dedicated to simplifying complex e-commerce operations.
+                </p>
+              </SlideEffect>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              {[
+                { name: "Team Member", role: "CEO & Founder" },
+                { name: "Team Member", role: "CTO" },
+                { name: "Team Member", role: "Head of Product" },
+                { name: "Team Member", role: "CMO" }
+              ].map((dev, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.12 }}
+                  className="flex flex-col items-center text-center group"
+                >
+                  {/* Circular Avatar */}
+                  <div className="w-36 h-36 md:w-44 md:h-44 rounded-full bg-muted flex items-center justify-center mb-5 group-hover:shadow-lg transition-shadow duration-300">
+                    <User className="w-16 h-16 md:w-20 md:h-20 text-muted-foreground/40" />
+                  </div>
+
+                  {/* Name & Role */}
+                  <h3 className="text-lg font-bold text-foreground mb-1">{dev.name}</h3>
+                  <p className="text-sm font-medium text-primary">{dev.role}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ========== PRICING SECTION ========== */}
         <section id="pricing" className="py-24 sm:py-32 bg-muted/40">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -1270,7 +1313,7 @@ export default function Home() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-lg mb-1">Email</h4>
-                        <p className="mt-2 text-sm text-muted-foreground">contact@lienhoagroup.com</p>
+                        <p className="mt-2 text-sm text-muted-foreground">lienhoatechnology@gmail.com</p>
                       </div>
                     </div>
 
@@ -1334,8 +1377,8 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <Image src={logoImg} alt="Liên Hoa Group Logo" className="h-8 w-auto object-contain" />
-                <span className="font-bold text-xl">Liên Hoa Group</span>
+                <Image src={logoImg} alt="LiOne Logo" className="h-8 w-auto object-contain" />
+                <span className="font-bold text-xl">LiOne</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 Nền tảng phần mềm vận hành cho doanh nghiệp Việt.
@@ -1371,7 +1414,7 @@ export default function Home() {
           
           <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © 2026 Liên Hoa Group. Bản quyền thuộc về Công ty Cổ Phần Thương Mại Dịch Vụ Liên Hoa.
+              © 2026 LiOne. Bản quyền thuộc về Công ty Cổ Phần Thương Mại Dịch Vụ Liên Hoa.
             </p>
             <div className="flex gap-4">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Facebook</Link>
