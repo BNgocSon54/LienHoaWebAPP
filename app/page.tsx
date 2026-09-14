@@ -350,7 +350,7 @@ export default function Home() {
                     Nhiều năm kinh nghiệm phát triển <span className="text-primary">công cụ thương mại xuyên biên giới</span>
                   </h2>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    DAMI đồng hành cùng người bán TikTok Shop bằng một hệ thống kết nối KOL bài bản, an toàn và dễ mở rộng, giúp đội ngũ vận hành hiệu quả hơn mà vẫn giữ được sự kiểm soát.
+                    Liên Hoa đồng hành cùng người bán TikTok Shop bằng một hệ thống kết nối KOL bài bản, an toàn và dễ mở rộng, giúp đội ngũ vận hành hiệu quả hơn mà vẫn giữ được sự kiểm soát.
                   </p>
                 </div>
               </SlideEffect>
@@ -1249,7 +1249,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Section (Dohana style) */}
+        {/* Contact Section */}
         <section id="contact" className="py-20 md:py-28">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
