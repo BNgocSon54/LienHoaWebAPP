@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "LienHoa - Streamline Your Workflow",
+  title: "LiOne | Nền tảng vận hành doanh nghiệp Liên Hoa",
   description:
     "Boost productivity, reduce costs, and scale your business with our all-in-one platform.",
 }
